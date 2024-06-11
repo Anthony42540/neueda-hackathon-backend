@@ -19,4 +19,14 @@ public class controller {
     public List<BankAccount> getAccounts(@PathVariable("ssn") int ssn) {
         return client.getAccounts();
     }
+
+    @GetMapping("/{ssn}/{routing_num}")
+    public BankAccount getAccount(@PathVariable("routing_num") int routing_num) {
+        for (BankAccount account : client.getAccounts()) {
+            if (account.getRouting() == routing_num) {
+                return account;
+            }
+        }
+        return null;
+    }
 }
