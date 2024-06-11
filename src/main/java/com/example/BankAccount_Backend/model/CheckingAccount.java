@@ -60,10 +60,14 @@ public class CheckingAccount implements BankAccount {
 
     @Override
     public String toString(){
-        return "ID="+id+
+        String returner = "ID="+id+
                 "\nRouting Number="+routing_num+
                 "\nBalance= $"+balance+
                 "\nType= " + TYPE +
-                "\nTransaction History= " + transactionHistory;
+                "\nTransaction History= ";
+        for(Double transaction: transactionHistory){
+            returner += transaction + "\n";
+        }
+        return returner;
     }
 }

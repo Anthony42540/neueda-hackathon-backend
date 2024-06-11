@@ -1,17 +1,19 @@
 package com.example.BankAccount_Backend.model;
 
+import java.util.ArrayList;
+
 public class SavingsAccount implements BankAccount {
     private String id = "";
     private int routing_num = 0;
     private double balance = 0.0;
     private final String TYPE = "Savings";
-    private String transactionHistory;
+    private ArrayList<Double> transactionHistory = new ArrayList<>();
 
     public SavingsAccount(double openingBalance, String idStr) {
         routing_num = 12;
         balance = openingBalance;
         id = idStr;
-        transactionHistory = "Opened account with $"+openingBalance+".\n";
+        transactionHistory.add(openingBalance);
     }
 
     public double getBalance() {
@@ -40,23 +42,27 @@ public class SavingsAccount implements BankAccount {
 
     public void deposit(double num) {
         balance += num;
-        transactionHistory += "Deposited $"+num+".\n";
+        transactionHistory.add(num);
     }
 
     public String getTYPE() {
         return TYPE;
     }
 
-    public String getTransactionHistory() {
+    public ArrayList<Double> getTransactionHistory() {
         return transactionHistory;
     }
 
     @Override
     public String toString(){
-        return "ID="+id+
+        String returner = "ID="+id+
                 "\nRouting Number="+routing_num+
                 "\nBalance= $"+balance+
                 "\nType= " + TYPE +
-                "\nTransaction History= " + transactionHistory;
+                "\nTransaction History= ";
+        for(Double transaction: transactionHistory){
+            returner += transaction + "\n";
+        }
+        return returner;
     }
 }
