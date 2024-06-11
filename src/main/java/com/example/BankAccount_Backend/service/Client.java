@@ -1,25 +1,29 @@
-package com.example.BankAccount_Backend;
+package com.example.BankAccount_Backend.service;
+
+import com.example.BankAccount_Backend.model.BankAccount;
+import com.example.BankAccount_Backend.model.CheckingAccount;
+import com.example.BankAccount_Backend.model.SavingsAccount;
+import org.springframework.stereotype.Service;
+
 import java.util.*;
 import java.lang.*;
 
-public class Client {
+@Service
+public class Client implements ClientInterface {
 
     private String name;
     private int ssn;
     private String birthday;
     private List<BankAccount> accounts = new ArrayList<>();
 
-    public Client(String name, int ssn, String birthday, BankAccount account){
-        this.name = name;
-        this.ssn = ssn;
-        this.birthday = birthday;
-        accounts.add(account);
-    }
-
-    public Client(String name, int ssn, String birthday){
-        this.name=name;
-        this.ssn = ssn;
-        this.birthday = birthday;
+    public Client(){
+        name = "Jane Doe";
+        ssn = 1234567;
+        birthday = "01/01/2000";
+        BankAccount account1 = new SavingsAccount(1000.0, "1");
+        BankAccount account2 = new CheckingAccount(4000.0, "2");
+        this.addAccount(account1);
+        this.addAccount(account2);
     }
 
     public String getName() {

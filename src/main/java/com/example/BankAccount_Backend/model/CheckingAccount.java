@@ -1,18 +1,19 @@
-package com.example.BankAccount_Backend;
-import java.util.*;
+package com.example.BankAccount_Backend.model;
+
+import java.util.ArrayList;
 
 public class CheckingAccount implements BankAccount {
     private String id = "";
     private int routing_num = 0;
     private double balance = 0.0;
-    private final String TYPE = "checking";
-    private String transactionHistory;
+    private final String TYPE = "Checking";
+    private ArrayList<Double> transactionHistory = new ArrayList<>();
 
     public CheckingAccount(double openingBalance, String idStr) {
         routing_num = 12;
         balance = openingBalance;
         id = idStr;
-        transactionHistory = "Opened account with $"+openingBalance+".\n";
+        transactionHistory.add(openingBalance);
     }
 
     public double getBalance() {
@@ -41,18 +42,28 @@ public class CheckingAccount implements BankAccount {
 
     public void deposit(double num) {
         balance += num;
-        transactionHistory = "Deposited $"+num+".\n";
+        transactionHistory.add(num);
     }
 
     public void withdraw(double num) {
         balance -= num;
-        transactionHistory = "Withdrew $"+num+".\n";
+        transactionHistory.add(-1.0*num);
+    }
+
+    public String getTYPE() {
+        return TYPE;
+    }
+
+    public ArrayList<Double> getTransactionHistory() {
+        return transactionHistory;
     }
 
     @Override
     public String toString(){
         return "ID="+id+
                 "\nRouting Number="+routing_num+
-                "\nBalance= $"+balance;
+                "\nBalance= $"+balance+
+                "\nType= " + TYPE +
+                "\nTransaction History= " + transactionHistory;
     }
 }

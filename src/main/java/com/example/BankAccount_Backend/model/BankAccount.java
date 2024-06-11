@@ -1,4 +1,4 @@
-package com.example.BankAccount_Backend;
+package com.example.BankAccount_Backend.model;
 public interface BankAccount {
     public double getBalance();
     public String getID();
