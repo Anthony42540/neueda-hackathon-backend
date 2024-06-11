@@ -9,5 +9,6 @@ public interface BankAccount {
     public void setRouting(int num);
 
     public void deposit(double num);
+    public void withdraw(double num);
     public String toString();
 }

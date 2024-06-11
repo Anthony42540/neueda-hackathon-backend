@@ -53,6 +53,10 @@ public class SavingsAccount implements BankAccount {
         return transactionHistory;
     }
 
+    public void withdraw(double num) {
+        return;
+    }
+
     @Override
     public String toString(){
         String returner = "ID="+id+

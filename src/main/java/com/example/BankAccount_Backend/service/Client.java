@@ -24,6 +24,8 @@ public class Client implements ClientInterface {
         BankAccount account2 = new CheckingAccount(4000.0, "2");
         this.addAccount(account1);
         this.addAccount(account2);
+        account2.deposit(1000);
+        account2.withdraw(2000);
     }
 
     public String getName() {
