@@ -1,19 +1,23 @@
 package com.example.BankAccount_Backend.model;
 
+import java.util.Random;
 import java.util.ArrayList;
 
 public class CheckingAccount implements BankAccount {
     private String id = "";
     private int routing_num = 0;
     private double balance = 0.0;
+    private String clientName = "";
     private final String TYPE = "Checking";
     private ArrayList<Double> transactionHistory = new ArrayList<>();
 
-    public CheckingAccount(double openingBalance, String idStr) {
-        routing_num = 12;
+    public CheckingAccount(double openingBalance, String idStr, String clientName) {
+        Random rand = new Random();
+        routing_num = rand.nextInt(10000, 99999);
         balance = openingBalance;
         id = idStr;
         transactionHistory.add(openingBalance);
+        this.clientName = clientName;
     }
 
     public double getBalance() {
@@ -69,5 +73,9 @@ public class CheckingAccount implements BankAccount {
             returner += transaction + "\n";
         }
         return returner;
+    }
+
+    public String getClientName() {
+        return clientName;
     }
 }

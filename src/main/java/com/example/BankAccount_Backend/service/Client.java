@@ -20,8 +20,8 @@ public class Client implements ClientInterface {
         name = "Jane Doe";
         ssn = 1234567;
         birthday = "01/01/2000";
-        BankAccount account1 = new SavingsAccount(1000.0, "1");
-        BankAccount account2 = new CheckingAccount(4000.0, "2");
+        BankAccount account1 = new SavingsAccount(1000.0, "1", name);
+        BankAccount account2 = new CheckingAccount(4000.0, "2", name);
         this.addAccount(account1);
         this.addAccount(account2);
         account2.deposit(1000);
